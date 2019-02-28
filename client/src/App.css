@@ -1,33 +1,714 @@
-.App {
+@import '~antd/dist/antd.css';
+.changeCurrentStatusWrapper {
+  padding: 10px 24px;
+}
+
+.changeCurrentStatusWrapper p {
+  display: flex;
+  margin: 4px 0;
+}
+
+.changeCurrentStatusWrapper p div {
+  flex-shrink: 0;
+}
+
+.changeCurrentStatusWrapper p span {
+  flex-shrink: 1;
+  color: #000;
+}
+
+.changeCurrentStatusModal .ant-modal-body {
+  padding: 0;
+}
+
+.changeCurrentStatusP {
+  padding: 5px 24px;
+}
+
+.contentStyle {
+  padding: 25px 20px;
+}
+
+.editItemBefore {
+  text-align: right;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.editItemAfter {
+  height: 50px;
+  line-height: 50px;
+}
+
+.ant-btn-pro {
+  color: @primary-color;
+  background-color: transparent;
+  border-color: @primary-color;
+  border-style: solid;
+}
+
+.ant-btn-pro:hover,
+.ant-btn-pro:focus {
+  color: @primary-color;
+}
+
+.ant-btn-pro:hover,
+.ant-btn-pro:focus {
+  color: @primary-color;
+  background-color: transparent;
+  border-color: @primary-color;
+}
+
+.exportExcelText {
+  color: #000;
+  font-size: 16px;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.exportExcelText p {
+  font-size: 24px;
+  color: @primary-color;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ant-calendar-time .ant-calendar-footer .ant-calendar-time-picker-btn {
+  color: #d4cece;
+  cursor: not-allowed;
+}
+
+.editItemAfter>span {
+  display: inline-block;
+}
+
+.editItemAfter .ant-upload-list-text {
+  display: none;
+}
+
+.hideTime {
+  position: absolute;
+  opacity: 0;
+}
+
+.dayText .w-e-text-container {
+  height: 500px !important;
+}
+
+.loginIngWrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color .2s ease-out;
 }
 
-@keyframes App-logo-spin {
+.loading-anim {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px) rotateY(-90deg) rotateX(90deg) rotateZ(90deg) scale(0.5);
+  opacity: 0;
+  transition: all .2s ease-out;
+}
+
+.loading-anim .circle {
+  width: 100%;
+  height: 100%;
+  animation: spin 5s linear infinite;
+}
+
+.loading-anim .border {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid @primary-color;
+}
+
+.loading .loading-anim {
+  transform: translateZ(0) rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1);
+  opacity: 1;
+}
+
+.loading .loading-overlay {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dot {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: @primary-color;
+  animation: jitter 5s ease-in-out infinite, fade-in-out 5s linear infinite;
+}
+
+.dot:nth-child(1) {
+  top: 90px;
+  left: 180px;
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  top: 135px;
+  left: 168px;
+  animation-delay: 0.41667s;
+}
+
+.dot:nth-child(3) {
+  top: 168px;
+  left: 135px;
+  animation-delay: 0.83333s;
+}
+
+.dot:nth-child(4) {
+  top: 180px;
+  left: 90px;
+  animation-delay: 1.25s;
+}
+
+.dot:nth-child(5) {
+  top: 168px;
+  left: 45px;
+  animation-delay: 1.66667s;
+}
+
+.dot:nth-child(6) {
+  top: 135px;
+  left: 12px;
+  animation-delay: 2.08333s;
+}
+
+.dot:nth-child(7) {
+  top: 90px;
+  left: 0px;
+  animation-delay: 2.5s;
+}
+
+.dot:nth-child(8) {
+  top: 45px;
+  left: 12px;
+  animation-delay: 2.91667s;
+}
+
+.dot:nth-child(9) {
+  top: 12px;
+  left: 45px;
+  animation-delay: 3.33333s;
+}
+
+.dot:nth-child(10) {
+  top: 0px;
+  left: 90px;
+  animation-delay: 3.75s;
+}
+
+.dot:nth-child(11) {
+  top: 12px;
+  left: 135px;
+  animation-delay: 4.16667s;
+}
+
+.dot:nth-child(12) {
+  top: 45px;
+  left: 168px;
+  animation-delay: 4.58333s;
+}
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes jitter {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.7, 0.7);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  75% {
+    transform: scale(1.3, 1.3);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.loginIngText {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.loginErrorContent {
+  text-align: center;
+}
+
+.loginErrorContent i {
+  color: #b3b3b3;
+  font-size: 150px;
+  line-height: 1;
+}
+
+.loginErrorContent div {
+  font-size: 25px;
+  color: #424242;
+}
+
+.loginErrorContent p {
+  font-size: 16px;
+  color: #888;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+.flexSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.themeListWrapper {
+  padding: 0 70px 20px;
+}
+
+.rowStyle {
+  margin: 20px 30px;
+  line-height: 40px;
+}
+
+.colStyle {
+  padding-right: 10px;
+  text-align: right;
+}
+
+//修改上传组件
+.mindUpload {
+  border: 1px solid #d9d9d9;
+  width: 200px;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fbfbfb;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: border-color .3s ease;
+  transition: border-color .3s ease;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 8px;
+}
+
+.mindUpload div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 60px;
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadTips {
+  padding: 5px;
+  font-size: 12px;
+  color: #888;
+  line-height: 18px;
+}
+
+.ant-upload-list-picture .ant-upload-list-item {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  width: 200px;
+  height: 100px;
+  position: relative;
+  margin-bottom: 0;
+  margin-right: 5px;
+}
+
+.ant-upload-list-picture .ant-upload-list-item {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  width: 200px;
+  height: 100px;
+  position: relative;
+  margin-bottom: 0;
+  margin-right: 5px;
+}
+
+.ant-upload-list-picture .ant-upload-list-item-thumbnail {
+  width: 182px;
+  height: 82px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.ant-upload-list-picture .ant-upload-list-item-thumbnail img {
+  width: 182px;
+  height: 82px;
+  display: block;
+}
+
+:root .ant-upload-list-item-info .anticon-cross {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #666;
+}
+
+.linkedUrl {
+  position: absolute;
+  width: 80%;
+  left: 20%;
+}
+
+//结束
+.iconStyle {
+  display: inline-block;
+  height: 32px;
+  margin: 0 10px 0 20px;
+}
+
+.themeDetailWrapper {
+  padding: 0px 70px 20px;
+}
+
+.themeDetailTop {
+  margin-bottom: 20px;
+}
+
+.themeDetailTitle {
+  font-size: 16px;
+  color: #000;
+  line-height: 20px;
+}
+
+.themeDetailTitle span:first-child {
+  font-size: 13px;
+}
+
+.buttonWrapper {
+  margin-bottom: 10px;
+}
+
+.themeDetailImg {
+  width: 300px;
+  margin-top: 10px;
+}
+
+.themeDetailSub {
+  font-size: 12px;
+  color: #888;
+  line-height: 20px;
+}
+
+.themeDetailContent {
+  color: #333;
+  font-size: 15px;
+  margin: 10px 0px;
+}
+
+.resourceListWrapper {
+  padding: 20px 70px;
+}
+
+.topBreadcrumbWrapper {
+  margin: 15px 70px 0;
+}
+
+.addUserControls {
+  margin-left: 70px;
+}
+
+.addUserRow {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.addUserSpan {
+  padding-right: 20px;
+}
+
+.mg10 {
+  margin: 10px;
+}
+
+.addUserTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sendNewUserSMSContent {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  line-height: 1.8;
+  font-size: 15px;
+  color: #999;
+  width: 90%;
+}
+
+.redFont {
+  color: red
+}
+
+.greenFont {
+  color: green;
+}
+
+.themeListContent {
+  margin-top: 15px;
+  margin-left: -1.6%;
+}
+
+.ResourceCardList {
+  margin-top: 15px;
+  margin-left: -1.5%;
+}
+
+.resourceCardSelectListWrapper {
+  margin-left: -1.5%;
+}
+
+.commonSelectCircle {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.optionImg {
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.activeCommonSelectCircle {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 23px;
+  text-align: center;
+  font-size: 15px;
+  color: @primary-color;
+  border: 1px solid @primary-color;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.selectOptionImg {
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.modalButton {
+  height: 35px;
+  line-height: 30px;
+  text-align: center;
+  color: @primary-color;
+}
+
+.modalButton span {
+  display: inline-block;
+  height: 100%;
+  cursor: pointer;
+}
+
+.loginMainPic {
+  height: 320px;
+  width: 507px;
+}
+
+.loginMainPic img {
+  display: block;
+  height: 100%;
+}
+
+.loginPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: #f0ebe3;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputBorder {
+  border: 1px solid #ccc;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.inputBorder i {
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.loginTop {
+  margin-top: 200px;
+}
+
+.loginPageCon {
+  width: 380px;
+  height: 375px;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px 2px #ccc;
+  ;
+}
+
+.loginPageCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginPageRow {
+  margin: 0 10% 25px;
+}
+
+.marginBottom20 {
+  margin-bottom: 20px;
+}
+
+.loginTitle {
+  margin-top: 45px;
+  color: #dc3b36;
+  font-family: fantasy;
+  width: 60%;
+}
+
+.loginPagesplit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  padding: 0 10%;
+}
+
+.loginPageLine {
+  width: 30%;
+  height: 2px;
+  background-color: #000;
+}
+
+.loginPageInput {
+  width: 100%;
+  height: 35px;
+  border: 0px solid #ccc;
+  outline: none;
+}
+
+.loginPageBtn {
+  width: 100%;
+  height: 35px;
+  border: 0px solid #ccc;
+  font-size: 14px;
+  color: white;
+}
+
+.bgred {
+  background-color: #dc3b36;
+}
+
+.menuItem {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 5px;
+}
+
+.menuItem:hover {
+  background-color: #8ca1af;
+  cursor: pointer;
+}
+
+.font-bold {
+  color: white;
+}
+
+.ant-layout-sider-dark {
+  flex: 0 0 60px;
+}
+
+.header {
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1000;
+  height: 50px;
+  box-shadow: 0 2px 8px #c5c5ce;
+  line-height: 50px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.search_input {
+  font-size: 16px;
+  padding-left: 10px;
+  width: 60%;
+  height: 40px;
+  border: 0px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  outline: none;
 }
