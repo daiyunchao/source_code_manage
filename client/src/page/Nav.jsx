@@ -9,8 +9,10 @@ import { Menu, Icon, Layout, Breadcrumb, Divider } from 'antd';
 import CodeList from './CodeList'
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
 
 const Home = withRouter((props) => {
+
 
   return (
     <Layout style={{ width: '100%', height: '100%' }}>
@@ -20,6 +22,10 @@ const Home = withRouter((props) => {
             <Icon type="file-search" style={{ fontSize: "30px", "color": "#428bca" }} />
             <div class="font-bold">搜索</div>
           </div> */}
+          <div className="menuItem">
+            <Icon type="edit" style={{ fontSize: "30px", "color": "white" }} />
+            <div className="font-bold">添加</div>
+          </div>
           <div className="menuItem">
             <Icon type="code" style={{ fontSize: "30px", "color": "#1ab667" }} />
             <div className="font-bold">最新</div>
@@ -35,7 +41,27 @@ const Home = withRouter((props) => {
       <Layout style={{ backgroundColor: "#fff", minWidth: "1400px" }}>
         <Content>
           <div className="content">
-            <div className="header"><Icon type="search" style={{ "color": "#428bca" }} />搜索代码段~$:<input placeholder="输入代码段名称或内容查询,回车搜索" className="search_input" /></div>
+            <div className="header">
+              <Icon type="search" style={{ "color": "#428bca" }} />
+              搜索代码段~$:<input placeholder="输入代码段名称或内容查询,回车搜索" className="search_input" />
+              <div className="header_right">
+                <Menu
+                  onClick={() => { }}
+                  mode="horizontal"
+                >
+                  <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting" />更多操作</span>}>
+                    <MenuItemGroup title="Item 1">
+                      <Menu.Item key="setting:1">Option 1</Menu.Item>
+                      <Menu.Item key="setting:2">Option 2</Menu.Item>
+                    </MenuItemGroup>
+                    <MenuItemGroup title="Item 2">
+                      <Menu.Item key="setting:3">Option 3</Menu.Item>
+                      <Menu.Item key="setting:4">Option 4</Menu.Item>
+                    </MenuItemGroup>
+                  </SubMenu>
+                </Menu>
+              </div>
+            </div>
             <div style={{ backgroundColor: "#f1f4f8", width: "100%", "height": "100%", minHeight: "700px" }}>
               <Switch>
                 <Route exact path={envConfig.prefx + "/"} component={CodeList} />

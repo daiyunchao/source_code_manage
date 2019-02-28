@@ -697,10 +697,12 @@
   position: relative;
   z-index: 1000;
   height: 50px;
+  background-color: white;
   box-shadow: 0 2px 8px #c5c5ce;
   line-height: 50px;
   padding-left: 20px;
   font-size: 20px;
+  
 }
 
 .search_input {
@@ -800,4 +802,7 @@ h3,
 
 .content {
   background-color: rgb(241, 244, 248);
+}
+.header_right{
+  float: right;
 }
