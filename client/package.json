@@ -50,12 +50,14 @@
     "postcss-safe-parser": "4.0.1",
     "react": "^16.8.3",
     "react-app-polyfill": "^0.2.1",
+    "react-app-rewire-eslint": "^0.2.3",
     "react-app-rewired": "2.0.2-next.0",
     "react-dev-utils": "^7.0.3",
     "react-dom": "^16.8.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.5",
+    "react-syntax-highlighter": "^10.1.3",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
@@ -77,9 +79,11 @@
       "no-undef": "off",
       "no-restricted-globals": "off",
       "no-unused-vars": "off",
-      "no-useless-concat":"off",
-      "eqeqeq":"off",
-      "no-useless-constructor":"off"
+      "no-useless-concat": "off",
+      "eqeqeq": "off",
+      "no-useless-constructor": "off",
+      "import/first": "off",
+      "jsx-a11y/anchor-is-valid": "off"
     }
   },
   "browserslist": [
