@@ -10,18 +10,43 @@ export default class CodeItem extends Component {
     return (
       <div className="post-item">
         <div className="caption wrapper-lg">
-          <h2 className="post-title"><a href="#">Bootstrap 3: What you need to know</a></h2>
+          <h2 className="post-title"><a href="#">js获取地址栏参数的两种方法</a></h2>
           <div className="post-sum">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat.
-</p>
-            <h3>Html5 and CSS3</h3>
+            <p>项目中经常遇到获取上个页面跳转过来获取当前的参数</p>
+            <h3>代码段1:</h3>
             <SyntaxHighlighter  style={dark}>
               {`
-              //使用if 检查 postMessage方法是否存在
-              if(window.postMessage){
-                // 如果存在则发一个命令
-                window.postMessage('some string data')
+             function getUrlParms(name){
+              var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+              var r = window.location.search.substr(1).match(reg);
+              if(r!=null)
+              return unescape(r[2]);
+              return null;
               }
+            var id = getUrlParms("id");
+
+
+            //上述方法可以获取地址栏传过来的id，还可以这样写
+              `}
+            </SyntaxHighlighter>
+            <h3>代码段2:</h3>
+            <SyntaxHighlighter  style={dark}>
+              {`
+             function getRequest() {
+              var url = window.location.search; //获取url中"?"符后的字串
+              var theRequest = new Object();
+              if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                   
+                  theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+                   
+                }
+              }
+              return theRequest;
+            }
+            var id= getRequest().id;
               `}
             </SyntaxHighlighter>
           </div>
