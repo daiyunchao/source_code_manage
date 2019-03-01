@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { gd, gm, gs } from '../stores'
 import AddCode from '../components/AddCode'
+import { Menu, Icon, Layout, Breadcrumb, Divider, Button, Popover } from 'antd';
 export default class AddSourceCode extends Component {
   render() {
     return (
@@ -56,6 +57,13 @@ export default class AddSourceCode extends Component {
           <AddCode index={1}></AddCode>
           <AddCode index={2}></AddCode>
           <AddCode index={3}></AddCode>
+          <a className="add_new_code_a">+添加一个代码段</a>
+          <div style={{"height":"50px"}}>
+            <div className="saveBtnCon">
+            <Button type="primary" size="large" icon="save" style={{width:"120px"}}>保存</Button>
+            <Button  size="large" icon="api" style={{marginLeft:"10px",width:"120px"}}>取消</Button>
+            </div>
+          </div>
           <div className="text-muted">
           </div>
         </div>

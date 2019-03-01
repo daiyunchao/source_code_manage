@@ -13,7 +13,7 @@ export default class AddCode extends Component {
   render() {
     return (
       <div>
-        <h3>输入代码段{this.props.index}:<a className="add_new_code_a">-删除该代码段</a> <a className="add_new_code_a">+添加一个代码段</a></h3>
+        <h3>输入代码段{this.props.index}:<a className="add_new_code_a">-删除该代码段</a></h3>
         <div className="add_code_content" contentEditable={true}></div>
         <div className="line line-lg"></div>
       </div>

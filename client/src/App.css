@@ -821,9 +821,11 @@ h3,
   margin-left: 20px;
   margin-right: 20px;
 }
-.code_title{
+
+.code_title {
   margin-bottom: 20px;
 }
+
 .code_title_input {
   width: 80%;
   height: 50px;
@@ -833,38 +835,69 @@ h3,
   outline: none;
   margin-left: 10px;
 }
-.code_title_span{
+
+.code_title_span {
   font-size: 20px;
 }
-.code_desc{
+
+.code_desc {
   width: 80%;
   border: 0px solid #ccc;
   border-bottom: 1px solid #ccc;
   outline: none;
 }
-.code_table{
-  width:100%;
+
+.code_table {
+  width: 100%;
 }
-.code_table_span_name{
-  width:150px;
+
+.code_table_span_name {
+  width: 150px;
   text-align: left;
 }
-.code_table_span_content{
-  
-}
-.add_code_content{
-  width:100%;
-  height:400px;
+
+.code_table_span_content {}
+
+.add_code_content {
+  width: 100%;
+  height: 400px;
   background-color: rgb(68, 68, 68);
-  color:rgb(221, 221, 221);
+  color: rgb(221, 221, 221);
   font-family: '宋体';
-  padding:20px;
+  padding: 20px;
 }
-.add_new_code_a{
+
+.add_new_code_a {
   font-size: 14px;
-  color:rgb(24, 144, 255);
+  color: rgb(24, 144, 255);
   margin-left: 20px;
 }
-.select_folder{
-width:200px;
+
+.select_folder {
+  width: 200px;
+}
+
+.saveBtnCon {
+  text-align:center;
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
+
+.saveBtn {
+  width: 220px;
+  height: 35px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #62bcce;
+  border-width: 2px;
+  border-color: #fff;
+  border-radius: 50px;
+  font-weight: 500;
+  color: #fff!important;
+  font-size: 18px;
+  line-height: 1.33;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
 }
