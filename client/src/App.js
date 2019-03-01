@@ -20,6 +20,7 @@ envConfig.getInitRoter();
         <Router history={history}>
           <Switch>
             <Route exact path={prefx + "/"} component={Nav} />
+            <Route exact path={prefx + "/add_code"} component={Nav} />
             {/*  <Route exact path={prefx + "/logining"} component={LoginIng}/>
             <Route exact path={prefx + "/login_wb"} component={Login_WB}/>
             <Route exact path={prefx + "/login_Err"} component={Login_Err}/>

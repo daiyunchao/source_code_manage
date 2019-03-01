@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { Menu, Icon, Layout, Breadcrumb, Divider, Button, Popover } from 'antd';
 import CodeList from './CodeList'
+import AddSourceCode from './AddSourceCode'
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -38,11 +39,15 @@ const Home = withRouter((props) => {
             <Icon type="file-search" style={{ fontSize: "30px", "color": "#428bca" }} />
             <div class="font-bold">搜索</div>
           </div> */}
-          <div className="menuItem">
+          <div className="menuItem" onClick={() => {
+            gm.goPage('/add_code');
+          }}>
             <Icon type="edit" style={{ fontSize: "30px", "color": "white" }} />
             <div className="font-bold">添加</div>
           </div>
-          <div className="menuItem">
+          <div className="menuItem" onClick={() => {
+            gm.goPage('/');
+          }}>
             <Icon type="code" style={{ fontSize: "30px", "color": "#1ab667" }} />
             <div className="font-bold">最新</div>
           </div>
@@ -75,9 +80,9 @@ const Home = withRouter((props) => {
             </div>
             <div style={{ backgroundColor: "#f1f4f8", width: "100%", "height": "100%", minHeight: "700px" }}>
               <Switch>
+                <Route exact path={envConfig.prefx + "/add_code"} component={AddSourceCode} />
                 <Route exact path={envConfig.prefx + "/"} component={CodeList} />
-                {/* <Route exact path={envConfig.prefx + "/system_notify"} component={SystemNotify} />
-            <Route exact path={envConfig.prefx + "/portrait"} component={Portrait} /> */}
+                {/* <Route exact path={envConfig.prefx + "/portrait"} component={Portrait} /> */}
               </Switch>
             </div>
           </div>

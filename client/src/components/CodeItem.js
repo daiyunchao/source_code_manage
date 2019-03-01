@@ -13,7 +13,7 @@ export default class CodeItem extends Component {
           <h2 className="post-title"><a href="#">js获取地址栏参数的两种方法</a></h2>
           <div className="post-sum">
             <p>项目中经常遇到获取上个页面跳转过来获取当前的参数</p>
-            <h3>代码段1:</h3>
+            <h3>代码段1:(点击复制)</h3>
             <SyntaxHighlighter  style={dark}>
               {`
              function getUrlParms(name){
@@ -29,7 +29,7 @@ export default class CodeItem extends Component {
             //上述方法可以获取地址栏传过来的id，还可以这样写
               `}
             </SyntaxHighlighter>
-            <h3>代码段2:</h3>
+            <h3>代码段2:(点击复制)</h3>
             <SyntaxHighlighter  style={dark}>
               {`
              function getRequest() {
