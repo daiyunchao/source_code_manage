@@ -16,17 +16,28 @@ export default class CodeItem extends Component {
             <h3>代码段1:(点击复制)</h3>
             <SyntaxHighlighter  style={dark}>
               {`
-             function getUrlParms(name){
-              var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-              var r = window.location.search.substr(1).match(reg);
-              if(r!=null)
-              return unescape(r[2]);
-              return null;
-              }
-            var id = getUrlParms("id");
+             import os, sys, commands, re, pwd, time
 
-
-            //上述方法可以获取地址栏传过来的id，还可以这样写
+             # 调用方法,如果成功go on 如果失败了则退出
+             def callSys(cmdString):
+               print "\n"
+               print "Start: ", cmdString
+               ret = os.system(cmdString)
+               if ret != 0:
+                 print "Error :", cmdString
+                 exit()
+               print "Finish: ", cmdString
+             
+             # 执行命令 不问结果:
+             def runSys(cmdString):
+               print "\n"
+               print "Start: ", cmdString
+               ret = os.system(cmdString)
+               print "Finish: ", cmdString
+             
+             # 调用方法
+             callSys("yarn install")
+             runSys("npm install -d ")
               `}
             </SyntaxHighlighter>
             <h3>代码段2:(点击复制)</h3>
