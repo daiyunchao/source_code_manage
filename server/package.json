@@ -1,0 +1,11 @@
+{
+  "name": "source_code_manage",
+  "version": "1.0.0",
+  "description": "manage your code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
