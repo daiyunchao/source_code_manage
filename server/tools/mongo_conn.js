@@ -31,7 +31,7 @@ class MongoConn {
     })
   }
 
-  
+
 
   async find({ collectionName, whereCommand = {}, sortCase = {} }) {
     new Promise((r, j) => {
@@ -70,4 +70,23 @@ class MongoConn {
     })
   }
 
+  async delete({ collectionName, whereCommand = {}, deleteMany = false }) {
+    new Promise((r, j) => {
+      let method = "deleteOne";
+      if (deleteMany) {
+        method = "deleteMany"
+      }
+      this.targetDataBase.collection(collectionName)[method](whereCommand, (err, res) => {
+        if (err) {
+          return j(err);
+        }
+        return r(res);
+      })
+    })
+  }
+
+
+
 }
+
+module.exports = new MongoConn("source_code_manage");
