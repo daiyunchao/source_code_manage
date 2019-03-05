@@ -1,14 +1,19 @@
 let MongoClient = require('mongodb').MongoClient;
 let db_url = "mongodb://192.168.1.68:27017/source_code_manage"
 class MongoConn {
-  constructor(dataBaseName) {
+  constructor() {
     this.db = null;
     this.targetDataBase;
-    MongoClient.connect(db_url, (err, db) => {
+  }
+
+  conn(dataBaseName, callback) {
+    MongoClient.connect(db_url, { useNewUrlParser: true }, (err, db) => {
       if (err) throw err;
       console.log("数据库已经连接!");
       this.db = db;
       this.targetDataBase = db.db(dataBaseName);
+      return callback();
+
     });
   }
   close() {
@@ -17,7 +22,7 @@ class MongoConn {
 
   //插入数据
   async insert({ collectionName, insertObj }) {
-    new Promise((r, j) => {
+    return new Promise((r, j) => {
       let method = "insertOne";
       if (Array.isArray(insertObj)) {
         method = "insertMany";
@@ -34,7 +39,8 @@ class MongoConn {
 
 
   async find({ collectionName, whereCommand = {}, sortCase = {} }) {
-    new Promise((r, j) => {
+    return new Promise((r, j) => {
+
       this.targetDataBase.collection(collectionName).find(whereCommand).sort(sortCase).toArray((err, result) => {
         if (err) {
           return j(err);
@@ -44,9 +50,9 @@ class MongoConn {
     })
   }
 
-  async findOne({ collectionName, whereCommand = {}, sortCase = {} }) {
-    new Promise((r, j) => {
-      this.targetDataBase.collection(collectionName).findOne(whereCommand).sort(sortCase).toArray((err, result) => {
+  async findOne({ collectionName, whereCommand = {} }) {
+    return new Promise((r, j) => {
+      this.targetDataBase.collection(collectionName).findOne(whereCommand, (err, result) => {
         if (err) {
           return j(err);
         }
@@ -56,7 +62,7 @@ class MongoConn {
   }
 
   async update({ collectionName, whereCommand = {}, updateCommand = {}, updateMany = false }) {
-    new Promise((r, j) => {
+    return new Promise((r, j) => {
       let method = "updateOne";
       if (updateMany) {
         method = "updateMany"
@@ -71,7 +77,7 @@ class MongoConn {
   }
 
   async delete({ collectionName, whereCommand = {}, deleteMany = false }) {
-    new Promise((r, j) => {
+    return new Promise((r, j) => {
       let method = "deleteOne";
       if (deleteMany) {
         method = "deleteMany"
@@ -89,4 +95,4 @@ class MongoConn {
 
 }
 
-module.exports = new MongoConn("source_code_manage");
+module.exports = new MongoConn();

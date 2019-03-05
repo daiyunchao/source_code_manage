@@ -13,7 +13,7 @@ class Folder {
       whereCommand: { "folderName": folderName }
     })
     if (folder && folder.folderName) {
-      throw new CodeError("302", CodeError.errorsMsg["302"]);
+      throw new CodeError("302", CodeError.errorsMsg()["302"]);
     }
     return await mongodb.insert({
       collectionName, insertObj: {

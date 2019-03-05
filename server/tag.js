@@ -13,7 +13,7 @@ class Tag {
       whereCommand: { "tagName": tagName }
     })
     if (tag && tag.tagName) {
-      throw new CodeError("302", CodeError.errorsMsg["302"]);
+      throw new CodeError("302", CodeError.errorsMsg()["302"]);
     }
     return await mongodb.insert({
       collectionName, insertObj: {

@@ -30,14 +30,15 @@ class Code {
             source_list,
             folder_id,
             tag_id,
+            edit_time:Date.now()
           }
         })
     } catch (error) {
-      throw new CodeError("500", CodeError.errorsMsg["500"]);
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
   }
   //修改
-  edit_code(code_id, title, description, source_list, folder_id, tag_id) {
+  async edit_code(code_id, title, description, source_list, folder_id, tag_id) {
     try {
       await mongodb.update({
         collectionName,
@@ -50,17 +51,18 @@ class Code {
             source_list,
             folder_id,
             tag_id,
+            edit_time:Date.now()
           }
         }
       })
     } catch (error) {
-      throw new CodeError("500", CodeError.errorsMsg["500"]);
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
   }
 
 
   //删除
-  delete_code(code_id) {
+  async delete_code(code_id) {
     try {
       await mongodb.delete(
         {
@@ -70,7 +72,7 @@ class Code {
           }
         })
     } catch (error) {
-      throw new CodeError("500", CodeError.errorsMsg["500"]);
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
   }
 
@@ -83,7 +85,7 @@ class Code {
         }
       })
     } catch (error) {
-      throw new CodeError("500", CodeError.errorsMsg["500"]);
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
   }
 
@@ -91,10 +93,10 @@ class Code {
   async getCodeList(){
     try {
       return await mongodb.find({
-        collectionName, whereCommand: {}
+        collectionName, whereCommand: {},sortCase:{"edit_time":-1}
       })
     } catch (error) {
-      throw new CodeError("500", CodeError.errorsMsg["500"]);
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
   }
 

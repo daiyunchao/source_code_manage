@@ -1,3 +1,4 @@
+const crypto=require("crypto")
 class Common {
   randomString(size) {
     if (size === 0) {
