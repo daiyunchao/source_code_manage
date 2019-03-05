@@ -15,12 +15,14 @@ class Folder {
     if (folder && folder.folderName) {
       throw new CodeError("302", CodeError.errorsMsg()["302"]);
     }
-    return await mongodb.insert({
+    let folderId = CommonTools.newUUID();
+    await mongodb.insert({
       collectionName, insertObj: {
-        "folderId": CommonTools.newUUID(),
+        "folderId": folderId,
         "folderName": folderName
       }
-    })
+    });
+    return this.getFolderById(folderId);
   }
 
   async getFolderById(folderId) {

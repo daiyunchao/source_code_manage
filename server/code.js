@@ -30,9 +30,10 @@ class Code {
             source_list,
             folder_id,
             tag_id,
-            edit_time:Date.now()
+            edit_time: Date.now()
           }
-        })
+        });
+      return this.getCodeDetail(code_id);
     } catch (error) {
       throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
@@ -51,10 +52,11 @@ class Code {
             source_list,
             folder_id,
             tag_id,
-            edit_time:Date.now()
+            edit_time: Date.now()
           }
         }
       })
+      return this.getCodeDetail(code_id);
     } catch (error) {
       throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
@@ -90,10 +92,48 @@ class Code {
   }
 
   //获取列表
-  async getCodeList(){
+  async getCodeList() {
     try {
       return await mongodb.find({
-        collectionName, whereCommand: {},sortCase:{"edit_time":-1}
+        collectionName, whereCommand: {}, sortCase: { "edit_time": -1 }
+      })
+    } catch (error) {
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
+    }
+  }
+
+  async getCodeListByFolder(folderId) {
+    try {
+      return await mongodb.find({
+        collectionName, whereCommand: {
+          "folder_id": folder_id
+        }, sortCase: { "edit_time": -1 }
+      })
+    } catch (error) {
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
+    }
+  }
+
+  async getCodeListByTag(tagId) {
+    try {
+      return await mongodb.find({
+        collectionName, whereCommand: {
+          "tag_id": tagId
+        }, sortCase: { "edit_time": -1 }
+      })
+    } catch (error) {
+      throw new CodeError("500", CodeError.errorsMsg()["500"]);
+    }
+  }
+
+  async searchCode(searchStr) {
+    try {
+      let pattern = new RegExp('.*' + searchStr + '.*', "i");
+      return await mongodb.find({
+        collectionName, whereCommand: {
+          "title": pattern,
+          "description": pattern
+        }, sortCase: { "edit_time": -1 }
       })
     } catch (error) {
       throw new CodeError("500", CodeError.errorsMsg()["500"]);

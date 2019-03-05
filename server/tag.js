@@ -15,12 +15,14 @@ class Tag {
     if (tag && tag.tagName) {
       throw new CodeError("302", CodeError.errorsMsg()["302"]);
     }
-    return await mongodb.insert({
+    let tagId = CommonTools.newUUID();
+    await mongodb.insert({
       collectionName, insertObj: {
-        "tagId": CommonTools.newUUID(),
+        "tagId": tagId,
         "tagName": tagName
       }
     })
+    return this.getTagById(tagId);
   }
 
   async getTagById(tagId) {
