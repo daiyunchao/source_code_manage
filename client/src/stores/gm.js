@@ -107,7 +107,7 @@ class GM {
     let data = await asyncRequest.create_code(title, description, source_list, folder_id, tag_id);
     if (data && !data.isError) {
       let codeInfo = data.retData.codeInfo;
-      gd.currentSourceCodeList.push(codeInfo);
+      gd.currentSourceCodeList.unshift(codeInfo);
       gm.goBack();
       message.success('创建成功');
     } else {

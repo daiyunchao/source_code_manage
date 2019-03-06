@@ -99,7 +99,7 @@ class Home extends Component {
             <div className="content">
               <div className="header">
                 <Icon type="search" style={{ "color": "#428bca" }} />
-                搜索代码段~$:<input placeholder="输入代码段名称或内容查询,回车搜索" onKeyDown={this.search_key_down.bind(this)} onChange={this.sarch_value_change.bind(this)} className="search_input" />
+                搜索代码段~$:<input placeholder="输入代码段名称或内容查询,回车搜索" onKeyDown={this.search_key_down.bind(this)} value={gs.currentSearchValue} onChange={this.sarch_value_change.bind(this)} className="search_input" />
                 {/* <div className="header_right">
                   <Popover trigger="click" placement="leftBottom" content={content} title="更多操作">
                     <a style={{ fontSize: "14px", color: "#1890ff" }}>更多操作<Icon type="down" style={{ fontSize: "4px" }} /></a>
