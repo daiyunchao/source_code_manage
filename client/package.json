@@ -145,5 +145,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "homepage": "/source_code_manage"
 }

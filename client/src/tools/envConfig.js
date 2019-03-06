@@ -9,8 +9,8 @@ class envConfig {
     this.wbAuthSelfLoginUrl = "";
     this.prefx = (
       () => {
-        if (window.location.href.indexOf("9073") > -1 || window.location.href.indexOf("9074") > -1) { return "" }
-        else { return "" }
+        if (window.location.href.indexOf("3000") > -1) { return "" }
+        else { return "/source_code_manage" }
       }
     )();// /interest_exam/manager
   }
