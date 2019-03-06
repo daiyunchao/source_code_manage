@@ -8,4 +8,51 @@
 #### 使用技术
 React Mobx Node Koa2 Mongodb
 
+#### 如何使用
+
+git 获取代码:
+`clone git https://github.com/daiyunchao/source_code_manage.git`
+
+#### 启动开发版:
+启动客户端开发版 端口为:3000:
+`cd client`
+`yarn install`
+`yarn run start`
+
+启动服务器 端口为:3698(如果需要修改端口,对应的客户端也需要做修改,具体可在client文件夹中全局搜索3698)
+`cd server`
+`yarn install`
+`node ./index.js`
+
+
+
+#### 启动产品版
+客户端
+`cd client`
+`yarn install`
+`yarn run build`
+
+服务器pm2启动:
+`cd server`
+`yarn install`
+`pm2 start ./script/pm2_start.json`(需要需要cwd文件路径)
+
+配置nginx:
+我的配置,仅供参考:
+```nginx
+location  /source_code_manage {
+	alias   /home/daiyc/myPrj/source_code_manage/client/build;
+	index  index.html  index.htm;
+	try_files $uri $uri/ rewrite /source_code_manage;
+ }
+
+```
+
+修改数据库地址:
+`/tools/mongo_conn.js`
+
+修改端口号:
+`./index.js`
+
+
 #### 效果
