@@ -108,6 +108,7 @@ class GM {
     if (data && !data.isError) {
       let codeInfo = data.retData.codeInfo;
       gd.currentSourceCodeList.push(codeInfo);
+      gm.goBack();
       message.success('创建成功');
     } else {
       message.success('创建失败');

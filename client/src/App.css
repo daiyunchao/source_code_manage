@@ -878,7 +878,7 @@ h3,
 }
 
 .saveBtnCon {
-  text-align:center;
+  text-align: center;
   margin-right: 40px;
   margin-bottom: 20px;
 }
@@ -893,7 +893,7 @@ h3,
   border-color: #fff;
   border-radius: 50px;
   font-weight: 500;
-  color: #fff!important;
+  color: #fff !important;
   font-size: 18px;
   line-height: 1.33;
   text-align: center;
@@ -901,8 +901,17 @@ h3,
   vertical-align: middle;
   cursor: pointer;
 }
-.no_code{
+
+.no_code {
   text-align: center;
   margin-top: 100px;
   font-size: 20px;
+}
+
+.showMore {
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  color:rgb(24, 144, 255);
 }

@@ -9,6 +9,13 @@ import { message, Button, Icon } from 'antd';
 import envConfig from '../tools/envConfig';
 @observer
 class CodeItem extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showState: "sample",
+      showMoreFont: "显示全部"
+    }
+  }
   copyCode(content) {
 
   }
@@ -36,10 +43,34 @@ class CodeItem extends Component {
         </div>
       )
     })
+    let itemStyle = {
+    }
+    if (!this.props.notShowFolder && this.state.showState == "sample") {
+      itemStyle = {
+        "height": "400px",
+        "overflowY": "hidden"
+      }
+    }
     return (
-      <div className="post-item">
+      <div className="post-item" style={itemStyle}>
+        {this.props.notShowFolder ?
+          null :
+          <div className="showMore" onClick={() => {
+            if (this.state.showState == "sample") {
+              this.setState({
+                showState: "complete",
+                showMoreFont: "显示部分"
+              })
+            } else {
+              this.setState({
+                showState: "sample",
+                showMoreFont: "显示全部"
+              })
+            }
+          }}>{this.state.showMoreFont}</div>
+        }
         <div className="caption wrapper-lg">
-          <h2 className="post-title"><a rel="noopener noreferrer" href={envConfig.prefx+"/code_detail?code_id=" + this.props.code_id} target="_blank">{this.props.title}</a></h2>
+          <h2 className="post-title"><a rel="noopener noreferrer" href={envConfig.prefx + "/code_detail?code_id=" + this.props.code_id} target="_blank">{this.props.title}</a></h2>
           <div className="post-sum">
             <p>{this.props.description}</p>
             {

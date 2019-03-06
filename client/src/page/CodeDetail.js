@@ -13,14 +13,14 @@ class CodeDetail extends Component {
     gm.getCodeDetail(codeId);
   }
   render() {
-    if(gd.current_code_detail_by_page&&gd.current_code_detail_by_page.title){
+    if (gd.current_code_detail_by_page && gd.current_code_detail_by_page.title) {
       return (
         <CodeItem {...gd.current_code_detail_by_page} notShowFolder={true} notShowTag={false}></CodeItem>
       )
-    }else{
-      return (<div>代码段加载中...</div>)
+    } else {
+      return (<div className="no_code">代码加载中....</div>)
     }
-   
+
   }
 }
 
