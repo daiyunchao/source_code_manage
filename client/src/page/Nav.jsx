@@ -19,9 +19,9 @@ const MenuItemGroup = Menu.ItemGroup;
 class Home extends Component {
   constructor() {
     super()
-   
+
   }
-  sarch_value_change(e) {
+  search_key_down(e) {
     var et = e || window.event;
     var keycode = et.charCode || et.keyCode;
     if (keycode == 13) {
@@ -29,9 +29,10 @@ class Home extends Component {
         gm.goPage("/")
       }
       gm.get_sarch_code_list(gs.currentSearchValue);
-    } else {
-      gs.currentSearchValue=e.target.value;
     }
+  }
+  sarch_value_change(e) {
+    gs.currentSearchValue = e.target.value;
   }
   render() {
     return (
@@ -51,7 +52,7 @@ class Home extends Component {
             <div className="menuItem" onClick={() => {
               gm.setCodeListLoadding();
               gm.get_code_list();
-              gs.currentSearchValue="";
+              gs.currentSearchValue = "";
               gm.goPage('/');
             }}>
               <Icon type="code" style={{ fontSize: "30px", "color": "#1ab667" }} />
@@ -98,7 +99,7 @@ class Home extends Component {
             <div className="content">
               <div className="header">
                 <Icon type="search" style={{ "color": "#428bca" }} />
-                搜索代码段~$:<input placeholder="输入代码段名称或内容查询,回车搜索" onKeyDown={this.sarch_value_change.bind(this)} className="search_input" />
+                搜索代码段~$:<input placeholder="输入代码段名称或内容查询,回车搜索" onKeyDown={this.search_key_down.bind(this)} onChange={this.sarch_value_change.bind(this)} className="search_input" />
                 {/* <div className="header_right">
                   <Popover trigger="click" placement="leftBottom" content={content} title="更多操作">
                     <a style={{ fontSize: "14px", color: "#1890ff" }}>更多操作<Icon type="down" style={{ fontSize: "4px" }} /></a>
@@ -137,7 +138,7 @@ class Nav extends Component {
       return (<p key={"folder_item" + item.folderId}><a onClick={() => {
         gd.current_folder_id = item.folderId;
         gm.setCodeListLoadding();
-        gs.currentSearchValue="";
+        gs.currentSearchValue = "";
         gm.get_code_list_by_folder();
         gm.goPage("/")
       }}><Icon type="folder-open" />{item.folderName}</a></p>)
@@ -146,7 +147,7 @@ class Nav extends Component {
       return (<p key={"tag_item" + item.tagId}><a onClick={() => {
         gd.current_tag_id = item.tagId;
         gm.setCodeListLoadding();
-        gs.currentSearchValue="";
+        gs.currentSearchValue = "";
         gm.get_code_list_by_tag();
         gm.goPage("/")
       }}><Icon type="tag" />{item.tagName}</a></p>)

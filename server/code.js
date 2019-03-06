@@ -128,14 +128,22 @@ class Code {
 
   async searchCode(searchStr) {
     try {
+      console.log("searchStr==>", searchStr);
+
       let pattern = new RegExp('.*' + searchStr + '.*', "i");
       return await mongodb.find({
         collectionName, whereCommand: {
-          "title": pattern,
-          "description": pattern
+          $or: [
+            { "source_list": pattern },
+            { "title": pattern },
+            { "description": pattern },
+          ]
+
         }, sortCase: { "edit_time": -1 }
       })
     } catch (error) {
+      console.log("error==>", error);
+
       throw new CodeError("500", CodeError.errorsMsg()["500"]);
     }
   }
