@@ -46,5 +46,13 @@ git 获取代码:
 修改端口号:
 `./index.js`
 
-
+```
 #### 效果
+
+![列表](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/list.png)
+
+![添加](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/add.png)
+
+![添加文件夹](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/add_folder.png)
+
+![添加标签](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/add_tag.png)
