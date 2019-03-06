@@ -9,9 +9,12 @@ const Folder = require("./folder")
 const Code = require("./code")
 const Tag = require("./tag")
 const Ret = require("./tools/ret")
-const mongoCon=require("./tools/mongo_conn")
+const mongoCon = require("./tools/mongo_conn")
 const prefix = "/source_code_mange";
-
+const client_prefix = "/source_code_manage";
+const static = require('koa-static');
+const fs = require("fs");
+const path = require("path");
 app.use(cors({
   origin: function (ctx) {
     return '*'
@@ -23,21 +26,33 @@ app.use(cors({
   allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
 }))
 
-router.get(prefix+"/", async (ctx, next) => {
-  // ctx.type = 'html';
-  ctx.body = "hello world";
+
+router.get("/source_code_manage/static/css/:filename", async (ctx, next) => {
+  ctx.type = "css";
+  ctx.body = fs.createReadStream(__dirname + '/../client/build/static/css/' + ctx.params.filename);
 });
+router.get("/source_code_manage/static/js/:filename", async (ctx, next) => {
+  ctx.type = "js";
+  ctx.body = fs.createReadStream(__dirname + '/../client/build/static/js/' + ctx.params.filename);
+});
+
+router.get([client_prefix + "/", client_prefix + "/code_detail"], async (ctx, next) => {
+  ctx.type = "html";
+  ctx.body = fs.createReadStream(__dirname + '/../client/build/index.html');
+});
+
+
 router.post(prefix + '/create_folder', async (ctx, next) => {
   console.log("in create_folder");
-  
+
   let body = ctx.request.body;
   let { folderName } = body;
-  console.log("in create_folder folderName:",folderName);
+  console.log("in create_folder folderName:", folderName);
   let ret = new Ret();
   try {
     let folderInfo = await new Folder().createFolder(folderName);
-    console.log("folderInfo===>",folderInfo);
-    
+    console.log("folderInfo===>", folderInfo);
+
     ctx.body = ret.getRightResult({ "folderInfo": folderInfo });
   } catch (error) {
     ctx.body = ret.getErrorResult(error);
@@ -144,7 +159,7 @@ router.post(prefix + '/get_code_list', async (ctx, next) => {
   let ret = new Ret();
   try {
     let codeList = await new Code().getCodeList();
-    ctx.body =  ret.getRightResult({ "codeList": codeList });
+    ctx.body = ret.getRightResult({ "codeList": codeList });
   } catch (error) {
     ctx.body = ret.getErrorResult(error);
   }
@@ -156,7 +171,7 @@ router.post(prefix + '/get_sarch_code_list', async (ctx, next) => {
   let ret = new Ret();
   try {
     let codeList = await new Code().searchCode(search_val);
-    ctx.body =  ret.getRightResult({ "codeList": codeList });
+    ctx.body = ret.getRightResult({ "codeList": codeList });
   } catch (error) {
     ctx.body = ret.getErrorResult(error);
   }
@@ -190,7 +205,7 @@ router.post(prefix + '/get_tag_code_list', async (ctx, next) => {
 
 
 app.use(router.routes());
-mongoCon.conn("source_code_manage",()=>{
+mongoCon.conn("source_code_manage", () => {
   app.listen(3698, () => {
     console.log("server is running at 3698 port");
   })

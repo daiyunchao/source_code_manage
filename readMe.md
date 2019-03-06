@@ -32,19 +32,11 @@ git 获取代码:
 `yarn install`
 `yarn run build`
 
+
 服务器pm2启动:
 `cd server`
 `yarn install`
 `pm2 start ./script/pm2_start.json`(需要需要cwd文件路径)
-
-配置nginx:
-我的配置,仅供参考:
-```nginx
-location  /source_code_manage {
-	alias   /home/daiyc/myPrj/source_code_manage/client/build;
-	index  index.html  index.htm;
-	try_files $uri $uri/ rewrite /source_code_manage;
- }
 
 ```
 

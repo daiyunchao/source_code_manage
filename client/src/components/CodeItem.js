@@ -6,6 +6,7 @@ import { observer } from 'mobx-react'
 import { gd, gm, gs } from '../stores'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { message, Button, Icon } from 'antd';
+import envConfig from '../tools/envConfig';
 @observer
 class CodeItem extends Component {
   copyCode(content) {
@@ -38,7 +39,7 @@ class CodeItem extends Component {
     return (
       <div className="post-item">
         <div className="caption wrapper-lg">
-          <h2 className="post-title"><a rel="noopener noreferrer" href={"/code_detail?code_id=" + this.props.code_id} target="_blank">{this.props.title}</a></h2>
+          <h2 className="post-title"><a rel="noopener noreferrer" href={envConfig.prefx+"/code_detail?code_id=" + this.props.code_id} target="_blank">{this.props.title}</a></h2>
           <div className="post-sum">
             <p>{this.props.description}</p>
             {
