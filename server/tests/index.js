@@ -2,6 +2,7 @@ const Folder = require("../folder")
 const Tag = require("../tag")
 const Code = require("../code")
 const mongodb = require("../tools/mongo_conn")
+const request=require("request")
 
 class Test {
   async test_create_folder() {
@@ -142,17 +143,21 @@ class Test {
 //DSYaDJUHOnYcRyWh folderId
 //cWKrXRfrpyvDKv7G tagId
 let test = new Test()
-mongodb.conn("source_code_manage", () => {
-  // test.test_create_folder()
-  // test.test_create_tag();
-  // test.test_folder_list()
-  // test.test_tag_list();
-  // test.test_get_folder_by_id();
-  // test.test_get_tag_by_id();
-  // test.test_create_code();
-  // test.test_code_get_detail()
-  // test.test_code_get_list();
-  // test.test_code_edit();
-  // test.deleteCode();
-});
+request.post("http://192.168.1.68:3698/source_code_mange/create_folder",(err,httpResponse,body)=>{
+  console.log("response info==>",httpResponse.statusCode);
+  
+})
+// mongodb.conn("source_code_manage", () => {
+//   // test.test_create_folder()
+//   // test.test_create_tag();
+//   // test.test_folder_list()
+//   // test.test_tag_list();
+//   // test.test_get_folder_by_id();
+//   // test.test_get_tag_by_id();
+//   // test.test_create_code();
+//   // test.test_code_get_detail()
+//   // test.test_code_get_list();
+//   // test.test_code_edit();
+//   // test.deleteCode();
+// });
 

@@ -9,8 +9,8 @@ class envConfig {
     this.wbAuthSelfLoginUrl = "";
     this.prefx = (
       () => {
-        if (window.location.href.indexOf("9073") > -1||window.location.href.indexOf("9074") > -1) { return "" }
-        else{return ""}
+        if (window.location.href.indexOf("9073") > -1 || window.location.href.indexOf("9074") > -1) { return "" }
+        else { return "" }
       }
     )();// /interest_exam/manager
   }
@@ -33,29 +33,11 @@ class envConfig {
   }
 
   setDev() {
-    if(window.location.href.indexOf("https://")==0){
-      this.apiPrex = "https://192.168.1.69/ms/admin_manager/api/";
-      this.wbAuthPrefx = "https://192.168.1.69";
-      this.loginPage="https://192.168.1.69/admin_manage/manager/login";
-    }else{
-      this.apiPrex = "http://192.168.1.69/ms/admin_manager/api/";
-      this.wbAuthPrefx = "http://192.168.1.69";
-      this.loginPage="http://192.168.1.69/admin_manage/manager/login";
-    }
-    this.wbAuthClientId = "uE2e3TpNLSyehvxH";
-    this.wbAuthPwd = "eI2Ihf5FDcguoL2OGoHb0WASOywzM0CP";
-    this.industryId="5bea39e0f7b110296e1b914e";
-    this.wbAuthSelfLoginUrl = "https://192.168.1.69/interest_exam/manager/index.html";
+    this.apiPrex = "http://192.168.1.68:3698/source_code_mange/";
   }
 
   setPro() {
-    this.apiPrex = "https://weibang.youth.cn/ms/admin_manager/api/";
-    this.wbAuthPrefx = "https://weibang.youth.cn";
-    this.loginPage="https://weibang.youth.cn/admin_manage/manager/login"
-    this.wbAuthClientId = "uE2e3TpNLSyehvxH";
-    this.wbAuthPwd = "eI2Ihf5FDcguoL2OGoHb0WASOywzM0CP";
-    this.industryId="5c0a27063338ed59030eda7f";
-    this.wbAuthSelfLoginUrl = "https://weibang.youth.cn/interest_exam/manager/index.html";
+    this.apiPrex = "http://192.168.1.68:3698/source_code_mange/";
   }
 }
 export default new envConfig();

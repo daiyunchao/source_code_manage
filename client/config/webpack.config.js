@@ -336,6 +336,7 @@ module.exports = function (webpackEnv) {
                 ),
 
                 plugins: [
+                  "transform-decorators-legacy",
                   [
                     [
                       "@babel/plugin-proposal-decorators",

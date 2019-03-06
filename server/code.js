@@ -106,7 +106,7 @@ class Code {
     try {
       return await mongodb.find({
         collectionName, whereCommand: {
-          "folder_id": folder_id
+          "folder_id": folderId
         }, sortCase: { "edit_time": -1 }
       })
     } catch (error) {
