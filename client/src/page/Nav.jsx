@@ -19,19 +19,18 @@ const MenuItemGroup = Menu.ItemGroup;
 class Home extends Component {
   constructor() {
     super()
-    this.state = {
-      search_value: ""
-    }
+   
   }
   sarch_value_change(e) {
     var et = e || window.event;
     var keycode = et.charCode || et.keyCode;
     if (keycode == 13) {
-      gm.get_sarch_code_list(this.state.search_value);
+      if (location.href.indexOf("add_code") > 0) {
+        gm.goPage("/")
+      }
+      gm.get_sarch_code_list(gs.currentSearchValue);
     } else {
-      this.setState({
-        search_value: e.target.value
-      })
+      gs.currentSearchValue=e.target.value;
     }
   }
   render() {
@@ -52,6 +51,7 @@ class Home extends Component {
             <div className="menuItem" onClick={() => {
               gm.setCodeListLoadding();
               gm.get_code_list();
+              gs.currentSearchValue="";
               gm.goPage('/');
             }}>
               <Icon type="code" style={{ fontSize: "30px", "color": "#1ab667" }} />
@@ -137,14 +137,18 @@ class Nav extends Component {
       return (<p key={"folder_item" + item.folderId}><a onClick={() => {
         gd.current_folder_id = item.folderId;
         gm.setCodeListLoadding();
+        gs.currentSearchValue="";
         gm.get_code_list_by_folder();
+        gm.goPage("/")
       }}><Icon type="folder-open" />{item.folderName}</a></p>)
     })
     let tagListHTML = gd.currentTagList.map((item, index, arr) => {
       return (<p key={"tag_item" + item.tagId}><a onClick={() => {
         gd.current_tag_id = item.tagId;
         gm.setCodeListLoadding();
+        gs.currentSearchValue="";
         gm.get_code_list_by_tag();
+        gm.goPage("/")
       }}><Icon type="tag" />{item.tagName}</a></p>)
     })
     return (

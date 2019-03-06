@@ -7,7 +7,9 @@ import { Menu, Icon, Layout, Breadcrumb, Divider, Button, Popover } from 'antd';
 class CodeList extends Component {
   constructor() {
     super()
-    gm.get_code_list();
+    if(gs.needGetData){
+      gm.get_code_list();
+    }
   }
   render() {
     let codeListHTML = gd.currentSourceCodeList.map((item, index, arr) => {

@@ -36,7 +36,7 @@ router.get("/source_code_manage/static/js/:filename", async (ctx, next) => {
   ctx.body = fs.createReadStream(__dirname + '/../client/build/static/js/' + ctx.params.filename);
 });
 
-router.get([client_prefix + "/", client_prefix + "/code_detail"], async (ctx, next) => {
+router.get([client_prefix + "/", client_prefix + "/code_detail",, client_prefix + "/add_code"], async (ctx, next) => {
   ctx.type = "html";
   ctx.body = fs.createReadStream(__dirname + '/../client/build/index.html');
 });

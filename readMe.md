@@ -38,7 +38,6 @@ git 获取代码:
 `yarn install`
 `pm2 start ./script/pm2_start.json`(需要需要cwd文件路径)
 
-```
 
 修改数据库地址:
 `/tools/mongo_conn.js`
@@ -46,7 +45,10 @@ git 获取代码:
 修改端口号:
 `./index.js`
 
-```
+修改数据库名:
+`/tools/mongo_conn.js`(修改链接)
+`./index.js` (修改目标数据库名)
+
 #### 效果
 
 ![列表](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/list.png)
@@ -56,3 +58,4 @@ git 获取代码:
 ![添加文件夹](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/add_folder.png)
 
 ![添加标签](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/add_tag.png)
+

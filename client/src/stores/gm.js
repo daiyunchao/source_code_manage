@@ -120,6 +120,7 @@ class GM {
       let codeList = data.retData.codeList;
       gd.currentSourceCodeList = codeList;
       this.resetCodeLoadding();
+      gs.needGetData=false;
     } else {
       message.success('获取代码列表失败');
     }
