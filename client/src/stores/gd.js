@@ -14,7 +14,9 @@ class GD {
 
   @observable current_tag_id = "";
 
-  
+  @observable current_code_detail_by_page = {};
+
+
   initCurrentCodeDetail() {
     extendObservable(this.currentCodeDetail, {
       title: "",

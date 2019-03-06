@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 import createHistory from "history/createBrowserHistory"
 import { gd, gm, gs } from './stores'
 import Nav from './page/Nav.jsx'
+import CodeDetail from './page/CodeDetail'
 import envConfig from './tools/envConfig.js'
 import './App.css'
 const history = createHistory()
@@ -21,6 +22,7 @@ envConfig.getInitRoter();
           <Switch>
             <Route exact path={prefx + "/"} component={Nav} />
             <Route exact path={prefx + "/add_code"} component={Nav} />
+            <Route exact path={prefx + "/code_detail"} component={CodeDetail} />
             {/*  <Route exact path={prefx + "/logining"} component={LoginIng}/>
             <Route exact path={prefx + "/login_wb"} component={Login_WB}/>
             <Route exact path={prefx + "/login_Err"} component={Login_Err}/>

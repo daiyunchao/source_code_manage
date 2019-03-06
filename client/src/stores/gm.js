@@ -9,7 +9,7 @@ class GM {
     this.history = null;
   }
   getFolderByFolderId(folderId) {
-    let folder={};
+    let folder = {};
     for (const folderInfo of gd.currentFolderList) {
       if (folderInfo["folderId"] == folderId) {
         folder = folderInfo;
@@ -20,7 +20,7 @@ class GM {
   }
 
   getTagByTagId(tagId) {
-    let tag={};
+    let tag = {};
     for (const tagInfo of gd.currentTagList) {
       if (tagInfo["tagId"] == tagId) {
         tag = tagInfo;
@@ -92,6 +92,13 @@ class GM {
     let data = await asyncRequest.get_tag_list();
     if (data && !data.isError) {
       gd.currentTagList = data.retData.tagList;
+    }
+  }
+
+  async getCodeDetail(codeId) {
+    let data = await asyncRequest.get_code_detail(codeId);
+    if (data && !data.isError) {
+      gd.current_code_detail_by_page = data.retData.codeInfo;
     }
   }
 
