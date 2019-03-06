@@ -1,0 +1,18 @@
+{
+  "apps": [
+    {
+      "name": "source_code_manage",
+      "script": "./index.js",
+      "args": [
+        "--env=dev"
+      ],
+      "exec_interpreter": "node",
+      "watch": false,
+      "merge_logs": true,
+      "min_uptime": "60s",
+      "max_restarts": 5,
+      "restart_delay": 1000,
+      "cwd": "/home/daiyc/myPrj/source_code_manage/server"
+    }
+  ]
+}
