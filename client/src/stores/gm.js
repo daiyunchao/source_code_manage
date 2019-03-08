@@ -115,13 +115,51 @@ class GM {
     }
   }
 
+  async edit_code() {
+    let { code_id, title, description, source_list, folder_id, tag_id } = gd.currentCodeDetail;
+    let data = await asyncRequest.edit_code(code_id, title, description, source_list, folder_id, tag_id);
+    if (data && !data.isError) {
+      let codeInfo = data.retData.codeInfo;
+      let array = gd.currentSourceCodeList;
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element.code_id == codeInfo.code_id) {
+          array[index] = codeInfo;
+          break;
+        }
+      }
+      gm.goBack();
+      message.success('编辑成功');
+    } else {
+      message.success('编辑失败');
+    }
+  }
+
+  async delete_code(code_id) {
+    let data = await asyncRequest.delete_code(code_id);
+    if (data && !data.isError) {
+      let array = gd.currentSourceCodeList;
+      let retIndex = -1;
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element.code_id == code_id) {
+          retIndex = index;
+          break;
+        }
+      }
+      gd.currentSourceCodeList.splice(retIndex, 1);
+      message.success('删除成功');
+    } else {
+      message.success('删除失败');
+    }
+  }
   async get_code_list() {
     let data = await asyncRequest.get_code_list();
     if (data && !data.isError) {
       let codeList = data.retData.codeList;
       gd.currentSourceCodeList = codeList;
       this.resetCodeLoadding();
-      gs.needGetData=false;
+      gs.needGetData = false;
     } else {
       message.success('获取代码列表失败');
     }

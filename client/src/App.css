@@ -915,3 +915,8 @@ h3,
   cursor: pointer;
   color:rgb(24, 144, 255);
 }
+.list_a_opt{
+  margin-left: 20px;
+  color:rgb(24, 144, 255);
+  font-size: 14px;
+}

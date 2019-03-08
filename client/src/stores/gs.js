@@ -5,6 +5,7 @@ class GS {
   @observable isCodeListLoadding = true;
   @observable currentSearchValue="";
   @observable needGetData=true;
+  @observable currentIsEditStatus=false;
   constructor() {
 
   }

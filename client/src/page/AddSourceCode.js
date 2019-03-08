@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { gd, gm, gs } from '../stores'
 import AddCode from '../components/AddCode'
-import { Menu, Icon, Layout, Breadcrumb, Divider, Button, Popover } from 'antd';
+import { Menu, Icon, Layout, Breadcrumb, Divider, Button, Popover, message } from 'antd';
 @observer
 class AddSourceCode extends Component {
   constructor() {
@@ -21,16 +21,45 @@ class AddSourceCode extends Component {
     if (gd.currentCodeDetail.tag_id == "") {
       gd.currentCodeDetail.tag_id = document.getElementById("select_tag").value;
     }
+    if (gd.currentCodeDetail.title == "") {
+      message.error("标题是必填项")
+      return;
+    }
+    let haveItemIsNone = false;
+    for (const val of gd.currentCodeDetail.source_list) {
+      if (!val) {
+        haveItemIsNone = true;
+        break;
+      }
+    }
+    if (haveItemIsNone) {
+      message.error("有的代码段是空的")
+      return;
+    }
     console.log("gd.currentCodeDetail==>", gd.currentCodeDetail);
-    gm.create_code();
+    if(gs.currentIsEditStatus){
+      gm.edit_code();
+    }else{
+      gm.create_code();
+
+    }
 
   }
   render() {
     let folderListHtml = gd.currentFolderList.map((item, index) => {
-      return (<option key={item.folderId} value={item.folderId}>{item.folderName}</option>)
+      let selected = false
+      if (item.folderId == gd.currentCodeDetail.folder_id) {
+        selected = true;
+      }
+      return (<option selected={selected} key={item.folderId} value={item.folderId}>{item.folderName}</option>)
+
     })
     let tagListHtml = gd.currentTagList.map((item, index) => {
-      return (<option key={item.tagId} value={item.tagId}>{item.tagName}</option>)
+      let selected = false
+      if (item.tagId == gd.currentCodeDetail.tag_id) {
+        selected = true;
+      }
+      return (<option selected={selected} key={item.tagId} value={item.tagId}>{item.tagName}</option>)
     })
     let codeHtml = gd.currentCodeDetail.source_list.map((item, index) => {
       return (<AddCode key={"addCode_" + index} index={index + 1} code={item} code_change={this.code_item_change.bind(this)}></AddCode>)
@@ -47,7 +76,7 @@ class AddSourceCode extends Component {
                 <td className="code_table_span_content">
                   <input className="code_title_input"
                     onChange={(e) => { gd.changeCodeDetailValue("title", e.target.value) }}
-                    value={gd.initCurrentCodeDetail.title}></input>
+                    value={gd.currentCodeDetail.title}></input>
                 </td>
               </tr>
               <tr>
@@ -57,7 +86,7 @@ class AddSourceCode extends Component {
                 <td className="code_table_span_content">
                   <input className="code_title_input"
                     onChange={(e) => { gd.changeCodeDetailValue("description", e.target.value) }}
-                    value={gd.initCurrentCodeDetail.description}></input>
+                    value={gd.currentCodeDetail.description}></input>
                 </td>
               </tr>
               <tr>
@@ -100,7 +129,7 @@ class AddSourceCode extends Component {
           <div style={{ "height": "50px" }}>
             <div className="saveBtnCon">
               <Button type="primary" size="large" icon="save" style={{ width: "120px" }} onClick={this.saveCode.bind(this)}>保存</Button>
-              <Button size="large" icon="api" style={{ marginLeft: "10px", width: "120px" }} onClick={()=>{
+              <Button size="large" icon="api" style={{ marginLeft: "10px", width: "120px" }} onClick={() => {
                 gm.goBack();
               }}>取消</Button>
             </div>

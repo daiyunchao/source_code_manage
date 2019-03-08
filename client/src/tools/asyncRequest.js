@@ -60,6 +60,15 @@ class AsyncRequest {
     })
   }
 
+
+  async delete_code(code_id) {
+    return await asyncHelper.post({
+      apiName: "delete_code",
+      postData: {
+        code_id
+      }
+    })
+  }
   async edit_code(code_id, title, description, source_list, folder_id, tag_id) {
     return await asyncHelper.post({
       apiName: "edit_code",
@@ -77,14 +86,14 @@ class AsyncRequest {
       }
     })
   }
-  
+
   async get_code_list() {
     return await asyncHelper.post({
       apiName: "get_code_list",
       postData: {}
     })
   }
-    async get_sarch_code_list(search_val) {
+  async get_sarch_code_list(search_val) {
     return await asyncHelper.post({
       apiName: "get_sarch_code_list",
       postData: {
@@ -95,14 +104,14 @@ class AsyncRequest {
   async get_folder_code_list(folderId) {
     return await asyncHelper.post({
       apiName: "get_folder_code_list",
-      postData: {folderId}
+      postData: { folderId }
     })
   }
-  
+
   async get_tag_code_list(tagId) {
     return await asyncHelper.post({
       apiName: "get_tag_code_list",
-      postData: {tagId}
+      postData: { tagId }
     })
   }
 }

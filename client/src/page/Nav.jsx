@@ -80,6 +80,7 @@ class Home extends Component {
                 <p>
                   <a style={{ color: "#1890ff" }} onClick={() => {
                     gs.isShowAddTagModal = true;
+                    gs.currentIsEditStatus=false;
                   }}><Icon type="plus-circle" />添加标签</a>
                 </p>
                 {this.props.tagListHTML}
@@ -109,6 +110,7 @@ class Home extends Component {
               <div style={{ backgroundColor: "#f1f4f8", width: "100%", "height": "100%", minHeight: "700px" }}>
                 <Switch>
                   <Route exact path={envConfig.prefx + "/add_code"} component={AddSourceCode} />
+                  <Route exact path={envConfig.prefx + "/edit_code"} component={AddSourceCode} />
                   <Route exact path={envConfig.prefx + "/"} component={CodeList} />
                   {/* <Route exact path={envConfig.prefx + "/portrait"} component={Portrait} /> */}
                 </Switch>

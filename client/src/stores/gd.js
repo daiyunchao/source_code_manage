@@ -18,13 +18,27 @@ class GD {
 
 
   initCurrentCodeDetail() {
+
+    //创建对象
     extendObservable(this.currentCodeDetail, {
+      code_id: "",
       title: "",
       description: "",
       source_list: [''],
       folder_id: "",
       tag_id: ""
     })
+
+  }
+
+  copyProps(source, copyObj) {
+    for (let item in source) {
+      if (copyObj) {
+        if (copyObj.hasOwnProperty(item)) {
+          source[item] = copyObj[item];
+        }
+      }
+    }
   }
 
   changeCodeDetailValue(key, value) {

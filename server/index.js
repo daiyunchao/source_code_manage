@@ -36,7 +36,7 @@ router.get("/source_code_manage/static/js/:filename", async (ctx, next) => {
   ctx.body = fs.createReadStream(__dirname + '/../client/build/static/js/' + ctx.params.filename);
 });
 
-router.get([client_prefix + "/", client_prefix + "/code_detail",, client_prefix + "/add_code"], async (ctx, next) => {
+router.get([client_prefix + "/", client_prefix + "/code_detail", , client_prefix + "/add_code"], async (ctx, next) => {
   ctx.type = "html";
   ctx.body = fs.createReadStream(__dirname + '/../client/build/index.html');
 });
@@ -141,6 +141,19 @@ router.post(prefix + '/edit_code', async (ctx, next) => {
     ctx.body = ret.getErrorResult(error);
   }
 })
+
+router.post(prefix + '/delete_code', async (ctx, next) => {
+  let body = ctx.request.body;
+  let { code_id } = body;
+  let ret = new Ret();
+  try {
+    let codeInfo = await new Code().delete_code(code_id);
+    ctx.body = ret.getRightResult({});
+  } catch (error) {
+    ctx.body = ret.getErrorResult(error);
+  }
+})
+
 
 router.post(prefix + '/get_code_detail', async (ctx, next) => {
   let body = ctx.request.body;
