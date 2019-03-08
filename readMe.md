@@ -49,6 +49,9 @@ git 获取代码:
 `/tools/mongo_conn.js`(修改链接)
 `./index.js` (修改目标数据库名)
 
+--------------------------------------
+2019年3月8日 添加 编辑&删除功能
+
 #### 效果
 
 ![列表](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/list.png)
@@ -58,4 +61,5 @@ git 获取代码:
 ![添加文件夹](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/add_folder.png)
 
 ![添加标签](https://github.com/daiyunchao/source_code_manage/blob/master/xgt/add_tag.png)
+
 
