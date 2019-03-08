@@ -36,9 +36,18 @@ router.get("/source_code_manage/static/js/:filename", async (ctx, next) => {
   ctx.body = fs.createReadStream(__dirname + '/../client/build/static/js/' + ctx.params.filename);
 });
 
+
 router.get([client_prefix + "/", client_prefix + "/code_detail", , client_prefix + "/add_code"], async (ctx, next) => {
   ctx.type = "html";
   ctx.body = fs.createReadStream(__dirname + '/../client/build/index.html');
+});
+
+router.get("/source_code_manage/:filename", async (ctx, next) => {
+  let fileName =ctx.params.filename.toLowerCase();
+  ctx.type=fileName.indexOf("jpg")>0&&"jpg";
+  ctx.type=fileName.indexOf("png")>0&&"png";
+  ctx.type=fileName.indexOf("gif")>0&&"gif";
+  ctx.body = fs.createReadStream(__dirname + '/../client/build/' + ctx.params.filename);
 });
 
 

@@ -64,6 +64,7 @@ class CodeItem extends Component {
       )
     })
     let itemStyle = {
+      "minHeight":"95%"
     }
     if (!this.props.notShowFolder && this.state.showState == "sample") {
       itemStyle = {
